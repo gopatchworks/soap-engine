@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Soap\Engine\Metadata\Model;
 
 use Soap\Engine\Metadata\Collection\ParameterCollection;
+use Soap\WsdlReader\Model\Definitions\Parts;
 
 final class Method
 {
