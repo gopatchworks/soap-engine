@@ -5,21 +5,20 @@ declare(strict_types=1);
 namespace Soap\Engine\Metadata\Model;
 
 use Soap\Engine\Metadata\Collection\ParameterCollection;
-use Soap\WsdlReader\Model\Definitions\Parts;
 
 final class Method
 {
     private ParameterCollection $parameters;
-    private Parts $headers;
+    private ?XsdType $header;
     private string $name;
     private XsdType $returnType;
     private MethodMeta $meta;
 
-    public function __construct(string $name, Parts $headers, ParameterCollection $parameters, XsdType $returnType)
+    public function __construct(string $name, ?XsdType $header, ParameterCollection $parameters, XsdType $returnType)
     {
         $this->name = $name;
         $this->returnType = $returnType;
-        $this->headers = $headers;
+        $this->header = $header;
         $this->parameters = $parameters;
         $this->meta = new MethodMeta();
     }
@@ -29,9 +28,9 @@ final class Method
         return $this->parameters;
     }
 
-    public function getHeaders(): Parts
+    public function getHeader(): ?XsdType
     {
-        return $this->headers;
+        return $this->header;
     }
 
     public function getName(): string
