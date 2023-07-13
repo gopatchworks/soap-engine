@@ -9,14 +9,16 @@ use Soap\Engine\Metadata\Collection\ParameterCollection;
 final class Method
 {
     private ParameterCollection $parameters;
+    private Parts $headers;
     private string $name;
     private XsdType $returnType;
     private MethodMeta $meta;
 
-    public function __construct(string $name, ParameterCollection $parameters, XsdType $returnType)
+    public function __construct(string $name, Parts $headers, ParameterCollection $parameters, XsdType $returnType)
     {
         $this->name = $name;
         $this->returnType = $returnType;
+        $this->headers = $headers;
         $this->parameters = $parameters;
         $this->meta = new MethodMeta();
     }
@@ -24,6 +26,11 @@ final class Method
     public function getParameters(): ParameterCollection
     {
         return $this->parameters;
+    }
+
+    public function getHeaders(): Parts
+    {
+        return $this->headers;
     }
 
     public function getName(): string
