@@ -1,5 +1,5 @@
 {
-    "name": "php-soap/engine",
+    "name": "gopatchworks/soap-engine",
     "description": "SOAP engine design",
     "type": "library",
     "license": "MIT",
