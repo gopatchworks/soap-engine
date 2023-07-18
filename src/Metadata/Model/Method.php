@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Soap\Engine\Metadata\Model;
 
 use Soap\Engine\Metadata\Collection\ParameterCollection;
+use Soap\WsdlReader\Model\Definitions\QNamed;
 
 final class Method
 {
@@ -13,19 +14,31 @@ final class Method
     private string $name;
     private XsdType $returnType;
     private MethodMeta $meta;
+    private ?QNamed $namespace;
 
-    public function __construct(string $name, ?XsdType $header, ParameterCollection $parameters, XsdType $returnType)
-    {
+    public function __construct(
+        string $name,
+        ParameterCollection $parameters,
+        XsdType $returnType,
+        XsdType $header = null,
+        QNamed $namespace = null
+    ) {
         $this->name = $name;
         $this->returnType = $returnType;
         $this->header = $header;
         $this->parameters = $parameters;
         $this->meta = new MethodMeta();
+        $this->namespace = $namespace;
     }
 
     public function getParameters(): ParameterCollection
     {
         return $this->parameters;
+    }
+
+    public function getNamespace(): ?QNamed
+    {
+        return $this->namespace;
     }
 
     public function getHeader(): ?XsdType
