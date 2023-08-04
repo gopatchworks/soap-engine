@@ -10,7 +10,7 @@ use Soap\WsdlReader\Model\Definitions\QNamed;
 final class Method
 {
     private ParameterCollection $parameters;
-    private ?XsdType $header;
+    private ParameterCollection $headers;
     private string $name;
     private XsdType $returnType;
     private MethodMeta $meta;
@@ -20,12 +20,12 @@ final class Method
         string $name,
         ParameterCollection $parameters,
         XsdType $returnType,
-        XsdType $header = null,
+        ParameterCollection $headers,
         QNamed $namespace = null
     ) {
         $this->name = $name;
         $this->returnType = $returnType;
-        $this->header = $header;
+        $this->headers = $headers;
         $this->parameters = $parameters;
         $this->meta = new MethodMeta();
         $this->namespace = $namespace;
@@ -36,14 +36,14 @@ final class Method
         return $this->parameters;
     }
 
+    public function getHeaders(): ParameterCollection
+    {
+        return $this->headers;
+    }
+
     public function getNamespace(): ?QNamed
     {
         return $this->namespace;
-    }
-
-    public function getHeader(): ?XsdType
-    {
-        return $this->header;
     }
 
     public function getName(): string
