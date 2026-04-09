@@ -13,7 +13,7 @@ final class MethodTest extends TestCase
 {
     public function test_method()
     {
-        $method = new Method('method', $params = new ParameterCollection(), $result = XsdType::create('string'));
+        $method = new Method('method', $params = new ParameterCollection(), $result = XsdType::create('string'), new ParameterCollection());
 
         static::assertSame('method', $method->getName());
         static::assertSame($params, $method->getParameters());

@@ -18,7 +18,7 @@ final class MethodCollectionTest extends TestCase
     protected function setUp(): void
     {
         $this->collection = new MethodCollection(
-            new Method('hello', new ParameterCollection(), XsdType::create('Response'))
+            new Method('hello', new ParameterCollection(), XsdType::create('Response'), new ParameterCollection())
         );
     }
 
