@@ -9,8 +9,10 @@ jobs:
     name: Sync Packagist
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Sync Packagist
         uses: hotaruma/packagist-sync@v1.0.1
         with:
           api-token: ${{ secrets.PACKAGIST_TOKEN }}
-          composer-json-path: /composer.json
+          composer-json-path: ./composer.json
