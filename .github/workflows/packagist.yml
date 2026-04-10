@@ -2,12 +2,15 @@ name: Packagist Sync
 
 on:
   release:
-    types: [released]
+    types: [ released ]
 
 jobs:
   sync:
     name: Sync Packagist
-    uses: hotaruma/packagist-sync@v1.0.1
-    with:
-      api-token: ${{ secrets.PACKAGIST_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Packagist
+        uses: hotaruma/packagist-sync@v1.0.1
+        with:
+          api-token: ${{ secrets.PACKAGIST_TOKEN }}
 
