@@ -2,7 +2,7 @@ name: Packagist Sync
 
 on:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   sync:
