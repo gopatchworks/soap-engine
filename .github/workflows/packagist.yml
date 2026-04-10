@@ -1,0 +1,13 @@
+name: Packagist Sync
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  sync:
+    name: Sync Packagist
+    uses: hotaruma/packagist-sync@v1.0.1
+    with:
+      api-token: ${{ secrets.packagist_token }}
+
